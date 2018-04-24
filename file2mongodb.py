@@ -1,4 +1,3 @@
-import pandas 
 import face_recognition
 from pymongo import MongoClient
 import numpy as np
@@ -9,9 +8,9 @@ def RegisterNewUser(UserName,Department,UserPicture,conn):
 	known_image = face_recognition.load_image_file(UserPicture)
 	face_encoding = face_recognition.face_encodings(known_image)[0]
 	#print(obama_face_encoding)
-	db = conn.mydb  #连接mydb数据库，没有则自动创建
+	db = conn.mydb  
 	my_set = db['user']
-	my_set.insert_one({'UserName':UserName,'Department':Department,'picture_binary' \
+	my_set.insert_one({'UserName':UserName  ,'Department':Department  ,'picture_binary' \
 	: pickle.dumps(face_encoding)})
 
 
